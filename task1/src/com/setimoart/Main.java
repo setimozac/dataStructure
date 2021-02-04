@@ -1,12 +1,14 @@
 package com.setimoart;
 
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.StringJoiner;
 import java.util.stream.IntStream;
 
 public class Main {
-    public static Scanner sc = new Scanner(System.in);
+
+    public static Scanner sc = new Scanner(System.in); // scanner for user input
 
     public static void main(String[] args) {
         int size = 0;
@@ -18,7 +20,7 @@ public class Main {
             System.out.println("insert the size for an array: ");
             size = sc.nextInt();
         }
-        catch (Exception ex) {
+        catch (InputMismatchException ex) {
             System.out.println("array size is not numeric!");
             return;
         }
@@ -48,8 +50,10 @@ public class Main {
 
     }
 
+    // returns true if the number is prime
     public static boolean isPrime(int num) {
-        for(int i=2;i<num;i++){
+        if(num < 2) return false;
+        for(int i=2;i<=Math.sqrt(num);i++){
             if((num % i) == 0) {
                 return false;
             }
