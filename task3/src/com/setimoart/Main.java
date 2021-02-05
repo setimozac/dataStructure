@@ -22,6 +22,12 @@ public class Main {
         print2D(data2D);
         System.out.println();
         print2D(dubArr);
+
+        FibCached myFib = new FibCached();
+        System.out.println(myFib.getNthFib(4));
+        System.out.println(myFib);
+        System.out.println(myFib.getNthFib(7));
+        System.out.println(myFib);
     }
 
     static int getIfExists(int[][] data, int row, int col) {
