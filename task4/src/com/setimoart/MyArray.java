@@ -12,6 +12,7 @@ public class MyArray {
         return this.size;
     }
 
+    // helper method - increases the length of the array.
     private void increaseSize() {
         int[] aux = data.clone();
         data = new int[aux.length * 2];
@@ -20,6 +21,7 @@ public class MyArray {
         }
     }
 
+    // helper method - remove item by index - being used in 'deleteByIndex()' and 'deleteByValue()'
     private boolean remove(int index) {
 
         try{
@@ -46,7 +48,7 @@ public class MyArray {
     // may throw IndexOutOfBoundsException
     public int get(int index) {
         if(index >= this.size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
         return this.data[index];
     }
@@ -54,7 +56,7 @@ public class MyArray {
     public void deleteByIndex(int index) {
 
         if(index >= this.size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
         remove(index);
     }
@@ -70,7 +72,7 @@ public class MyArray {
 
     public void insertValueAtIndex(int value, int index) {
         if(index >= this.size) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Index is out of bounds");
         }
         if(this.data.length <= this.size + 1) {
             increaseSize();
@@ -84,7 +86,8 @@ public class MyArray {
 
     // may throw IndexOutOfBoundsException
     public int[] getSlice(int startIdx, int length) {
-        if(startIdx+length > this.size) throw new IndexOutOfBoundsException();
+        if(startIdx+length > this.size ) throw new IndexOutOfBoundsException("This range is out of bounds");
+        if(startIdx < 0 ) throw new IndexOutOfBoundsException("Index must be greater than or equal to Zero");
         int[] result = new int[length];
         int count = 0;
         for(int i=startIdx; i<startIdx+length;i++) {
