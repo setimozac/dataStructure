@@ -37,7 +37,7 @@ public class MyLinkList<T> {
         }
     }                                   // end inner class Container
 
-    public int size() {
+    public int getSize() {
         return this.size;
     }
 
@@ -135,7 +135,26 @@ public class MyLinkList<T> {
     }
 
     public boolean deleteByValue(T value) {
+        for(int i=0;i<size;i++) {
+            if(value == this.get(i)) {
+                this.deleteByIndex(i);
+                return true;
+            }
+        }
         return false;
     }
 
+    @Override
+    public String toString() {
+        String str = "";
+        str += "[";
+        for(int i=0;i<size;i++) {
+            str += this.get(i);
+            if(i+1 != size) {
+                str += ", ";
+            }
+        }
+        str+= "]";
+        return str;
+    }
 }
