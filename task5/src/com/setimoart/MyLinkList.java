@@ -1,6 +1,10 @@
 package com.setimoart;
 
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyLinkList<T> {
     private Container start, end;
     private int size;
@@ -156,5 +160,14 @@ public class MyLinkList<T> {
         }
         str+= "]";
         return str;
+    }
+
+    public List<T> toArray() {
+
+        List<T> arr = new ArrayList<>();
+        for(int i=0;i<size;i++) {
+            arr.add(this.get(i));
+        }
+        return arr;
     }
 }

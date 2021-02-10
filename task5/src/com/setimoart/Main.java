@@ -48,5 +48,10 @@ public class Main {
         System.out.println(list.getSize());
 
         System.out.println(list);
+
+
+        for(String i:list.toArray()) {
+            System.out.println(i);
+        }
     }
 }
