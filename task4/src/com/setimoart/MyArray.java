@@ -86,7 +86,7 @@ public class MyArray {
 
     // may throw IndexOutOfBoundsException
     public int[] getSlice(int startIdx, int length) {
-        if(startIdx+length > this.size ) throw new IndexOutOfBoundsException("This range is out of bounds");
+        if(startIdx+length > this.size || length < 0) throw new IndexOutOfBoundsException("This range is out of bounds");
         if(startIdx < 0 ) throw new IndexOutOfBoundsException("Index must be greater than or equal to Zero");
         int[] result = new int[length];
         int count = 0;
@@ -98,7 +98,7 @@ public class MyArray {
     }
 
     public void clear() {
-        this.data = new int[this.data.length];
+//        this.data = new int[this.data.length];
         size = 0;
     }
 

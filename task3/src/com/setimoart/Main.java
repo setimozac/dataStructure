@@ -18,6 +18,20 @@ public class Main {
                 {8, 3, 2, 1},
                 {1, 7, 1, 9},
         };
+
+        int sum = Integer.MAX_VALUE;
+        String position = "";
+        for(int row=0;row<data2D.length;row++)
+            for (int col = 0; col < data2D[row].length; col++) {
+                if(sum > sumOfCross(data2D, row, col)) {
+                    sum = sumOfCross(data2D, row, col);
+                    position = "row: " + row + " " + " col: " + col;
+                }
+
+            }
+
+        System.out.printf("smallest sum is: %d - position is %s%n",sum, position);
+
         int[][] dubArr = duplicateEmptyArray2D(data2D);
         print2D(data2D);
         System.out.println();
@@ -26,7 +40,7 @@ public class Main {
         FibCached myFib = new FibCached();
         System.out.println(myFib.getNthFib(4));
         System.out.println(myFib);
-        System.out.println(myFib.getNthFib(7));
+        System.out.println(myFib.getNthFib(70));
         System.out.println(myFib);
     }
 
