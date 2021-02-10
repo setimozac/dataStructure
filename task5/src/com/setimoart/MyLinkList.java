@@ -1,11 +1,7 @@
 package com.setimoart;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MyLinkList<T> {
-    private ArrayList<T> list;
     private Container start, end;
     private int size;
 
@@ -13,7 +9,6 @@ public class MyLinkList<T> {
         size = 0;
         start = null;
         end = null;
-        list =  new ArrayList<>();
     }
 
     private class Container {           // start inner class Container
@@ -123,9 +118,24 @@ public class MyLinkList<T> {
             }else{
                 start = this.getContainer(1);
             }
-
+            size --;
+            return;
         }
+
         Container prev = this.getContainer(index-1);
+
+        if(this.getContainer(index) == end) {
+            end = prev;
+            prev.setNext(null);
+        }
+        else{
+            prev.setNext(this.getContainer(index+1));
+        }
+        size --;
+    }
+
+    public boolean deleteByValue(T value) {
+        return false;
     }
 
 }
