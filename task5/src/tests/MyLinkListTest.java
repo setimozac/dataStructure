@@ -62,6 +62,17 @@ public class MyLinkListTest {
 
     @Test
     public void deleteByIndex() {
+
+        arr.deleteByIndex(1);
+        Assertions.assertEquals("1", arr.get(1));
+        Assertions.assertEquals(2, arr.getSize());
+
+        arr.deleteByIndex(0);
+        Assertions.assertEquals("1", arr.get(0));
+        Assertions.assertEquals(1, arr.getSize());
+
+        Exception ex = Assertions.assertThrows(IndexOutOfBoundsException.class, () -> arr.deleteByIndex(1));
+        Assertions.assertEquals("can not delete index 1",ex.getMessage());
     }
 
     @Test

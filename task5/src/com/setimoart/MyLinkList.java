@@ -90,10 +90,10 @@ public class MyLinkList<T> {
     }
 
     public void insertValueAtIndex(int index, T obj) {
-        if(index + 1 > size || index < 0) {
+        if(index  > size || index < 0) {
             throw new IndexOutOfBoundsException("can not insert in index " + index);
         }
-        if(index + 1 == size) addToEnd(obj);
+        if(index  == size) addToEnd(obj);
 
         Container item = new Container(obj);
 
@@ -128,19 +128,19 @@ public class MyLinkList<T> {
 
         Container prev = this.getContainer(index-1);
 
-        if(this.getContainer(index) == end) {
+        if(prev.getNext() == end) {
             end = prev;
             prev.setNext(null);
         }
         else{
-            prev.setNext(this.getContainer(index+1));
+            prev.setNext(prev.getNext().getNext());
         }
         size --;
     }
 
     public boolean deleteByValue(T value) {
         for(int i=0;i<size;i++) {
-            if(value == this.get(i)) {
+            if(value.equals(this.get(i))) {
                 this.deleteByIndex(i);
                 return true;
             }
