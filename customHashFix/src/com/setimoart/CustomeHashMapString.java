@@ -1,5 +1,7 @@
 package com.setimoart;
 
+import java.util.Iterator;
+
 class KeyNotFoundException extends Exception{
     public KeyNotFoundException(String message){
         super(message);
@@ -8,7 +10,7 @@ class KeyNotFoundException extends Exception{
 
 public class CustomeHashMapString {
 
-    private class Container{
+    private class Container {
         Container next;
         String key;
         String value;
@@ -170,13 +172,13 @@ public class CustomeHashMapString {
     }
 
     private int computeHashValue(String key) {
-        int hash = 0;
-        for (int i = 0; i < key.length(); i++) {
-            hash <<= 1;  // same as: hash *= 2, adding xor may be better
-            char c = key.charAt(i);
-            //hash += c;
-            hash = hash ^ c;
-        }
+//        int hash = 0;
+//        for (int i = 0; i < key.length(); i++) {
+//            hash <<= 1;  // same as: hash *= 2, adding xor may be better
+//            char c = key.charAt(i);
+//            //hash += c;
+//            hash = hash ^ c;
+//        }
 //        return hash;
         return key.hashCode();
     }
@@ -210,7 +212,7 @@ public class CustomeHashMapString {
         }
 
         hashTable = newHashTable;
-        
+
 
 //         the size needs to be a prime number
 //        arraySize = getNextPrime(arraySize);

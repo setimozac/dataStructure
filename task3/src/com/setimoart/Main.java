@@ -1,5 +1,7 @@
 package com.setimoart;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,37 +13,69 @@ public class Main {
 //        System.out.println(convertPi("olpikkpis"));
 //        System.out.println(sevens(757758717));
 //        System.out.println(repeatLastN("Hello", 4));
+//        System.out.println(groupSum(0, new int[]{8}, 8));
+//        System.out.println(array220(new int[]{2, 1, 10, 2}, 2));
+        strDist("catcowcat", "cat");
 
-        int[][] data2D = {
-                {1, 3, 6, 8},
-                {7, 1, 2, 3},
-                {8, 3, 2, 1},
-                {1, 7, 1, 9},
-        };
+//        int[][] data2D = {
+//                {1, 3, 6, 8},
+//                {7, 1, 2, 3},
+//                {8, 3, 2, 1},
+//                {1, 7, 1, 9},
+//        };
+//
+//        int sum = Integer.MAX_VALUE;
+//        String position = "";
+//        for(int row=0;row<data2D.length;row++)
+//            for (int col = 0; col < data2D[row].length; col++) {
+//                if(sum > sumOfCross(data2D, row, col)) {
+//                    sum = sumOfCross(data2D, row, col);
+//                    position = "row: " + row + " " + " col: " + col;
+//                }
+//
+//            }
+//
+//        System.out.printf("smallest sum is: %d - position is %s%n",sum, position);
+//
+//        int[][] dubArr = duplicateEmptyArray2D(data2D);
+//        print2D(data2D);
+//        System.out.println();
+//        print2D(dubArr);
+//
+//        FibCached myFib = new FibCached();
+//        System.out.println(myFib.getNthFib(4));
+//        System.out.println(myFib);
+//        System.out.println(myFib.getNthFib(70));
+//        System.out.println(myFib);
+    }
 
-        int sum = Integer.MAX_VALUE;
-        String position = "";
-        for(int row=0;row<data2D.length;row++)
-            for (int col = 0; col < data2D[row].length; col++) {
-                if(sum > sumOfCross(data2D, row, col)) {
-                    sum = sumOfCross(data2D, row, col);
-                    position = "row: " + row + " " + " col: " + col;
-                }
+    public static int strDist(String str, String sub) {
+        if(str.length() < sub.length()) return 0;
+        if(str.startsWith(sub) && str.substring((str.length()-sub.length())).equals(sub)) return str.length();
+        if(str.startsWith(sub)) return strDist(str.substring(0,str.length()-1), sub);
 
-            }
+        return strDist(str.substring(1), sub);
+    }
 
-        System.out.printf("smallest sum is: %d - position is %s%n",sum, position);
 
-        int[][] dubArr = duplicateEmptyArray2D(data2D);
-        print2D(data2D);
-        System.out.println();
-        print2D(dubArr);
+    public static boolean array220(int[] nums, int index) {
 
-        FibCached myFib = new FibCached();
-        System.out.println(myFib.getNthFib(4));
-        System.out.println(myFib);
-        System.out.println(myFib.getNthFib(70));
-        System.out.println(myFib);
+        if(index +1 == nums.length || nums.length == 0) return false;
+        if(nums[index] * 10 == nums[index+1]) return true;
+
+        return array220(nums,index+1);
+    }
+
+    public static boolean groupSum(int start, int[] nums, int target) {
+
+
+        if (start >= nums.length) return (target == 0);
+        if (groupSum(start + 1, nums, target - nums[start])) return true;
+        if (groupSum(start + 1, nums, target)) return true;
+
+
+        return false;
+
     }
 
     static int getIfExists(int[][] data, int row, int col) {
