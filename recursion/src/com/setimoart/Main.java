@@ -5,36 +5,36 @@ public class Main {
     // bug in nestParen
 
     public static void main(String[] args) {
-//        System.out.println(factorial(4));
-//        System.out.println(bunnyEars2(1));
-//        System.out.println(bunnyEars(3));
-//        System.out.println(fibonacci(6));
-//        System.out.println(triangle(4));
-//        System.out.println(sumDigits(2341));
-//        System.out.println(count7(879077271));
-//        System.out.println(count8(8818789));
-//        System.out.println(powerN(3,3));
-//        System.out.println(countX("xxhxxixxXTxxcx"));
-//        System.out.println(countHi("xhixhixhiuhihihihihuhi"));
-//        System.out.println(changeXY("xhixhixxxyujxghxfxfxhxxkxjxhgxgxhxX"));
-//        System.out.println(changePi("pip"));
-//        System.out.println(noX("xfx"));
-//        System.out.println(array6(new int[]{1, 6, 7, 9, 4}, 2));
-//        System.out.println(array11(new int[]{11,11, 6, 7, 9, 4}, 0));
-//        System.out.println(array220(new int[]{11,110, 6, 60, 9, 4}, 0));
-//        System.out.println(allStar("hello"));
-//        System.out.println(pairStar("xxyyaascfss"));
-//        System.out.println(endX("xhixhixwwxxlsixjshyxhgxx") );
-//        System.out.println(countPairs("axbxbxsx"));
-//        System.out.println(countAbc("abaxxabaabaabbabc") );
-//        System.out.println(count11("abc11x111x1111") );
-//        System.out.println(stringClean("abbaabcddeeeeeeeffghttyssslll"));
-//        System.out.println(countHi2("ahixhihixhihi"));
-//        System.out.println(parenBit("xyz(abc)"));
-//        System.out.println(nestParen("((((xx))))"));
-//        System.out.println(strCount("catcowcatcatocat", "cat") );
-//        System.out.println(strDist("catcowcat", "cat"));
-//        System.out.println(groupSum(0, new int[]{8}, 8));
+        System.out.println(factorial(4));
+        System.out.println(bunnyEars2(1));
+        System.out.println(bunnyEars(3));
+        System.out.println(fibonacci(6));
+        System.out.println(triangle(4));
+        System.out.println(sumDigits(2341));
+        System.out.println(count7(879077271));
+        System.out.println(count8(8818789));
+        System.out.println(powerN(3,3));
+        System.out.println(countX("xxhxxixxXTxxcx"));
+        System.out.println(countHi("xhixhixhiuhihihihihuhi"));
+        System.out.println(changeXY("xhixhixxxyujxghxfxfxhxxkxjxhgxgxhxX"));
+        System.out.println(changePi("pip"));
+        System.out.println(noX("xfx"));
+        System.out.println(array6(new int[]{1, 6, 7, 9, 4}, 2));
+        System.out.println(array11(new int[]{11,11, 6, 7, 9, 4}, 0));
+        System.out.println(array220(new int[]{11,110, 6, 60, 9, 4}, 0));
+        System.out.println(allStar("hello"));
+        System.out.println(pairStar("xxyyaascfss"));
+        System.out.println(endX("xhixhixwwxxlsixjshyxhgxx") );
+        System.out.println(countPairs("axbxbxsx"));
+        System.out.println(countAbc("abaxxabaabaabbabc") );
+        System.out.println(count11("abc11x111x1111") );
+        System.out.println(stringClean("abbaabcddeeeeeeeffghttyssslll"));
+        System.out.println(countHi2("ahixhihixhihi"));
+        System.out.println(parenBit("xyz(abc)"));
+        System.out.println(nestParen("((((xx))))"));
+        System.out.println(strCount("catcowcatcatocat", "cat") );
+        System.out.println(strDist("catcowcat", "cat"));
+        System.out.println(groupSum(0, new int[]{8}, 8));
     }
 
     public static boolean groupSum(int start, int[] nums, int target) {
@@ -96,13 +96,13 @@ public class Main {
         if(str.length() < 2) return str;
         if(str.charAt(0) == str.charAt(1)) return stringClean(str.substring(1));
 
-        return str.substring(0,1) + stringClean(str.substring(1));
+        return str.charAt(0) + stringClean(str.substring(1));
     }
 
     private static int count11(String str) {
 
         if(str.length() <= 1) return 0;
-        if(str.substring(0,2).equals("11")) return 1 + count11(str.substring(2));
+        if(str.startsWith("11")) return 1 + count11(str.substring(2));
 
         return count11(str.substring(1));
     }
@@ -110,7 +110,7 @@ public class Main {
     private static int countAbc(String str) {
 
         if(str.length() <= 2) return 0;
-        if(str.substring(0,3).equals("abc") || str.substring(0,3).equals("aba")) return 1 + countAbc(str.substring(3));
+        if(str.startsWith("abc") || str.substring(0,3).equals("aba")) return 1 + countAbc(str.substring(3));
 
         return countAbc(str.substring(1));
     }
@@ -126,23 +126,23 @@ public class Main {
     private static String endX(String str) {
 
         if(str.isEmpty()) return "";
-        if(str.substring(0,1).equals("x")) return endX(str.substring(1)) + "x";
+        if(str.charAt(0) == 'x') return endX(str.substring(1)) + "x";
 
-        return str.substring(0,1) + endX(str.substring(1));
+        return str.charAt(0) + endX(str.substring(1));
     }
 
     private static String pairStar(String str) {
 
         if(str.length() <= 1) return str;
-        if(str.charAt(0) == str.charAt(1)) return str.substring(0,1) + "*" + pairStar(str.substring(1));
-        return str.substring(0,1) + pairStar(str.substring(1));
+        if(str.charAt(0) == str.charAt(1)) return str.charAt(0) + "*" + pairStar(str.substring(1));
+        return str.charAt(0) + pairStar(str.substring(1));
     }
 
     private static String allStar(String str) {
 
         if(str.length() <= 1 ) return str;
 
-        return str.substring(0,1) + "*" + allStar(str.substring(1));
+        return str.charAt(0) + "*" + allStar(str.substring(1));
     }
 
     private static boolean array220(int[] arr, int i) {
@@ -172,14 +172,14 @@ public class Main {
         if(str.length() == 0) return "";
         if(str.charAt(0) == 'x') return noX(str.substring(1));
 
-        return str.substring(0,1) + noX(str.substring(1));
+        return str.charAt(0) + noX(str.substring(1));
     }
 
     private static String changePi(String str) {
 
         if(str.length() <= 1) return str;
         if(str.substring(0,2).equals("pi")) return "3.14" + changePi(str.substring(2));
-        return str.substring(0,1) + changePi(str.substring(1));
+        return str.charAt(0) + changePi(str.substring(1));
     }
 
     private static String changeXY(String str) {
@@ -187,7 +187,7 @@ public class Main {
         if(str.length() == 0) return "";
         if(str.charAt(0) == 'x') return  "y" + changeXY(str.substring(1));
 
-        return str.substring(0,1) + changeXY(str.substring(1));
+        return str.charAt(0) + changeXY(str.substring(1));
 
 
     }
